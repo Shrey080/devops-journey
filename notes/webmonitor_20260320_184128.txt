@@ -1,0 +1,6 @@
+Web Monitor Report - Fri Mar 20 18:41:28 IST 2026
+UP: 4 | DOWN: 0
+https://google.com → 301
+https://github.com → 200
+https://example.com → 200
+https://amazon.com → 301
