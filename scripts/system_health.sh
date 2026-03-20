@@ -14,7 +14,12 @@ echo ""
 
 # CPU Usage
 CPU=$(top -l 1 | grep "CPU usage" | awk '{print $3}' | tr -d '%')
-echo -e "💻 CPU Usage     : ${GREEN}${CPU}%${NC}"
+CPU_INT=${CPU%.*}
+if [ "$CPU_INT" -gt 80 ]; then
+    echo -e "💻 CPU Usage     : ${RED}${CPU}% ⚠️  HIGH!${NC}"
+else
+    echo -e "💻 CPU Usage     : ${GREEN}${CPU}%  ✅${NC}"
+fi
 
 # Memory
 MEM_USED=$(vm_stat | grep "Pages active" | awk '{print $3}' | tr -d '.')
@@ -25,7 +30,12 @@ echo -e "🧠 RAM Used      : ${GREEN}${MEM_USED_GB} GB${NC}"
 DISK_USED=$(df -h / | tail -1 | awk '{print $3}')
 DISK_TOTAL=$(df -h / | tail -1 | awk '{print $2}')
 DISK_AVAIL=$(df -h / | tail -1 | awk '{print $4}')
-echo -e "💾 Disk Used     : ${GREEN}${DISK_USED} / ${DISK_TOTAL} (${DISK_AVAIL} free)${NC}"
+DISK_PCT=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
+if [ "$DISK_PCT" -gt 80 ]; then
+    echo -e "💾 Disk Used     : ${RED}${DISK_USED} / ${DISK_TOTAL} ⚠️  DISK HIGH!${NC}"
+else
+    echo -e "💾 Disk Used     : ${GREEN}${DISK_USED} / ${DISK_TOTAL} (${DISK_AVAIL} free) ✅${NC}"
+fi
 
 # Running Processes
 PROCS=$(ps aux | wc -l)
