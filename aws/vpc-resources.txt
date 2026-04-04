@@ -1,0 +1,19 @@
+# Day 8 — AWS VPC Resources
+
+VPC ID:              vpc-0f4470b39d29c3eef
+CIDR:                10.0.0.0/16
+
+Public Subnet ID:    subnet-01b688bd1f2a42b88
+Public CIDR:         10.0.1.0/24
+Zone:                ap-south-1a
+
+Private Subnet ID:   subnet-017a63c1212720920
+Private CIDR:        10.0.2.0/24
+Zone:                ap-south-1b
+
+Internet Gateway:    igw-0cf6afb8bcc314c65
+Route Table:         rtb-0bd75d5364f6d1a6e
+Security Group:      sg-091861ad595a7e640
+
+EC2 Instance:        i-0f1543af581996fef
+EC2 Private IP:      10.0.1.217
